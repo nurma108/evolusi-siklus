@@ -1,0 +1,61 @@
+KREDIT DAN LISENSI ASET — DETEKTIF EVOLUSI
+
+Catatan:
+Versi AUTO-FOTO memakai URL Wikimedia Commons sehingga gambar dimuat langsung saat perangkat terhubung internet.
+Lisensi dan atribusi harus tetap dicantumkan pada versi final website.
+
+1. pemantik-homologi.svg
+   File: Homology vertebrates-en.svg
+   Author: Волков Владислав Петрович
+   License: CC BY-SA 4.0
+   https://commons.wikimedia.org/wiki/File:Homology_vertebrates-en.svg
+
+2. pemantik-peppered-moth.jpg
+   File: Biston betularia.jpg
+   License: CC BY-SA 4.0
+   https://commons.wikimedia.org/wiki/File:Biston_betularia.jpg
+
+3. pemantik-bekantan.jpg
+   File: Long Nose.jpg
+   Author: 7layersoflands
+   Location/context: Taman Wisata Alam Pulau Bakut, Kalimantan Selatan
+   License: CC BY-SA 4.0
+   https://commons.wikimedia.org/wiki/File:Long_Nose.jpg
+
+4. fosil-archaeopteryx.jpg
+   File: Archaeopteryx fossil.jpg
+   Author: James L. Amos / National Geographic Society
+   License: CC0
+   https://commons.wikimedia.org/wiki/File:Archaeopteryx_fossil.jpg
+
+5. dna-evolusi.png
+   File: DNA Double Helix.png
+   Author: Apers0n; source image by NHGRI/NIH
+   Public domain
+   https://commons.wikimedia.org/wiki/File:DNA_Double_Helix.png
+
+6. wallace-line.jpg
+   File: Wallace Linie.jpg
+   Author: Gunnar Ries
+   License: CC BY-SA 2.5
+   https://commons.wikimedia.org/wiki/File:Wallace_Linie.jpg
+
+7. habitat-bekantan.jpg
+   File: Bekantan at Pulau Bakut.jpg
+   Author: Gazagazasanid
+   Location: Pulau Bakut
+   License: CC BY-SA 4.0
+   https://commons.wikimedia.org/wiki/File:Bekantan_at_Pulau_Bakut.jpg
+
+8. embriologi-evolusi.jpg
+   Menggunakan ilustrasi dari buku Comparative embryology of the vertebrates (1953)
+   Wikimedia Commons; karya sumber dinyatakan public domain.
+   https://commons.wikimedia.org/wiki/File:Comparative_embryology_of_the_vertebrates;_with_2057_drawings_and_photos._grouped_as_380_illus_(1953)_(20644192346).jpg
+
+9. anatomi-homologi.jpg
+   Untuk sementara menggunakan diagram homologi yang sama dengan pemantik.
+   Bisa diganti dengan aset anatomi perbandingan lain pada revisi berikutnya.
+
+10. finch-darwin.jpg
+   Dicantumkan sebagai aset yang akan diverifikasi lagi sebelum versi final.
+   Jangan menghapus atribusi sebelum sumber final dikunci.

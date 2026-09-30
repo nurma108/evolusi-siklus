@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detektif Evolusi — Biologi Kelas XII</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --ink:#3f3150;--muted:#74677d;--purple:#73558f;--purple2:#9a78b5;
+  --lav:#eee6f5;--cream:#fffaf4;--paper:#f7efe6;--pink:#f6dce8;
+  --green:#dfeee3;--line:#dfd2e7;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{
+ margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+ background:linear-gradient(180deg,#fbf7f1,#f2ebf5);color:var(--ink);line-height:1.6
+}
+button{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.topbar{
+ position:sticky;top:0;z-index:50;background:rgba(255,250,244,.94);
+ backdrop-filter:blur(12px);border-bottom:1px solid var(--line)
+}
+.nav{
+ display:flex;align-items:center;gap:10px;padding:10px 0;overflow-x:auto
+}
+.brand{font-weight:900;color:var(--purple);margin-right:auto;white-space:nowrap}
+.nav button{
+ border:0;background:transparent;color:var(--muted);padding:9px 12px;border-radius:999px;
+ cursor:pointer;white-space:nowrap
+}
+.nav button:hover,.nav button.active{background:var(--lav);color:var(--purple);font-weight:800}
+.hero{
+ min-height:600px;display:grid;place-items:center;padding:55px 0 35px;
+ background:
+ radial-gradient(circle at 10% 20%,#eadcf2 0 10%,transparent 30%),
+ radial-gradient(circle at 90% 80%,#f5dfdc 0 8%,transparent 27%)
+}
+.hero-card{
+ background:rgba(255,255,255,.8);border:1px solid #eadfed;border-radius:34px;
+ padding:48px;box-shadow:0 20px 55px rgba(73,47,91,.10);text-align:center
+}
+.badge{
+ display:inline-block;background:var(--lav);color:var(--purple);padding:7px 14px;
+ border-radius:999px;font-size:.82rem;font-weight:800
+}
+h1{font-size:clamp(2.5rem,7vw,5.3rem);line-height:1;margin:18px 0 10px}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);margin:0 0 10px}
+h3{margin:8px 0}
+.lead{max-width:760px;margin:0 auto;color:var(--muted);font-size:1.08rem}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:25px 0}
+.pill{background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:999px;color:var(--muted)}
+.btn{
+ border:0;background:var(--purple);color:white;padding:12px 18px;border-radius:14px;
+ cursor:pointer;font-weight:800;box-shadow:0 7px 16px rgba(115,85,143,.2)
+}
+.btn.secondary{background:#fff;color:var(--purple);border:1px solid var(--line);box-shadow:none}
+section{padding:60px 0}
+.section-head{margin-bottom:25px}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--purple);font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{
+ background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:24px;
+ padding:22px;box-shadow:0 12px 30px rgba(67,45,79,.06)
+}
+.objective{display:flex;gap:13px;align-items:flex-start}
+.num{
+ min-width:34px;height:34px;border-radius:12px;background:var(--lav);color:var(--purple);
+ display:grid;place-items:center;font-weight:900
+}
+.video-wrap{position:relative;padding-top:56.25%;overflow:hidden;border-radius:22px;background:#241b2d}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.teacher-prompt{margin-top:16px;padding:14px 18px;border:1px solid var(--line);border-radius:16px;background:#fffdf7}
+.concept-video{padding:30px 0 10px;background:#faf6fb}
+.concept-video .section-head{margin-bottom:18px}
+.prompt-card{overflow:hidden;padding:0}
+.prompt-card img,.evidence img,.case img{width:100%;height:220px;object-fit:cover;display:block;background:#eee}
+.prompt-body{padding:18px}
+.caption{font-size:.78rem;color:var(--muted);margin-top:8px}
+.question{font-weight:800}
+.flow{
+ display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px
+}
+.flow div{
+ padding:13px;border-radius:16px;background:#fff;border:1px solid var(--line);text-align:center;
+ font-weight:800;font-size:.9rem
+}
+.theory{background:linear-gradient(180deg,#f4edf7,#fffaf4)}
+.timeline{display:grid;gap:12px}
+.timeline .row{display:grid;grid-template-columns:170px 1fr;gap:15px}
+.tag{background:var(--lav);padding:8px 12px;border-radius:13px;font-weight:900;color:var(--purple);height:max-content}
+.evidence{padding:0;overflow:hidden}
+.evidence .body{padding:18px}
+.sim{
+ background:linear-gradient(145deg,#f1e7dc,#fffaf4);border:1px solid #dfcfbf
+}
+.sim-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.select{
+ border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--ink)
+}
+.arena{
+ position:relative;height:300px;border-radius:20px;border:3px solid rgba(115,85,143,.2);
+ overflow:hidden;background:#d8d1bd
+}
+.arena.forest{background:#cfd9bf}
+.arena.soil{background:#d4b995}
+.arena.soot{background:#77716f}
+.prey{
+ position:absolute;width:34px;height:22px;border:0;
+ box-shadow:none;z-index:2;
+}
+.prey::before,.prey::after{
+ content:"";position:absolute;top:2px;width:16px;height:18px;
+ background:var(--wing);border:2px solid rgba(255,255,255,.75);
+ box-shadow:0 2px 4px rgba(0,0,0,.18);
+}
+.prey::before{left:0;border-radius:80% 25% 70% 30%;transform:rotate(-16deg)}
+.prey::after{right:0;border-radius:25% 80% 30% 70%;transform:rotate(16deg)}
+.prey{background:linear-gradient(90deg,transparent 44%,#2c2730 44%,#2c2730 56%,transparent 56%)}
+.prey.a{--wing:#eee7d4}.prey.b{--wing:#8b8279}.prey.c{--wing:#29252a}
+.prey.taken{opacity:0;transform:scale(.35);transition:opacity .25s,transform .25s}
+
+.predator{
+ position:absolute;right:12px;top:12px;background:#fff;border-radius:12px;padding:7px 10px;
+ font-weight:900;font-size:.82rem
+}
+.sim-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}
+.stat strong{display:block;font-size:1.4rem;color:var(--purple)}
+canvas{width:100%;height:240px;border:1px solid var(--line);border-radius:18px;background:#fff;margin-top:18px}
+.mechanisms{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mech button{width:100%;height:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;cursor:pointer}
+.mech button:hover{border-color:var(--purple)}
+.mech .answer{display:none;color:var(--muted);font-size:.9rem;margin-top:10px}
+.mech.open .answer{display:block}
+.case{overflow:hidden;padding:0}.case .body{padding:18px}
+.choice{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.case-result{margin-top:15px;background:var(--green);border-radius:16px;padding:14px;display:none}
+.quiz{display:grid;gap:15px}
+.qbox{background:#fff;border:1px solid var(--line);padding:18px;border-radius:20px}
+.qbox label{display:block;padding:8px;border-radius:10px;cursor:pointer}
+.qbox label:hover{background:#f7f0fa}
+.result{margin-top:18px;padding:18px;border-radius:18px;background:var(--lav);display:none}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:900}
+.reflection textarea{
+ width:100%;min-height:110px;border:1px solid var(--line);border-radius:15px;padding:14px;
+ resize:vertical;font:inherit
+}
+footer{padding:35px 0 55px;color:var(--muted);text-align:center}
+.small{font-size:.88rem;color:var(--muted)}
+@media(max-width:850px){
+ .grid,.grid2{grid-template-columns:1fr}
+ .flow{grid-template-columns:1fr 1fr}
+ .mechanisms{grid-template-columns:1fr 1fr}
+ .timeline .row{grid-template-columns:1fr}
+ .hero-card{padding:30px 20px}
+ .sim-stats{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+ section{padding:42px 0}
+ .flow,.mechanisms{grid-template-columns:1fr}
+ h1{font-size:3rem}
+ .prompt-card img,.evidence img,.case img{height:190px}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <div class="brand">🔎 DETEKTIF EVOLUSI</div>
+    <button data-go="beranda">Beranda</button>
+    <button data-go="bukti">Teori & Bukti</button>
+    <button data-go="lab">Lab Seleksi</button>
+    <button data-go="nusantara">Evolusi Nusantara</button>
+    <button data-go="kuis">Kuis</button>
+  </div>
+</header>
+
+<main>
+<section id="beranda" class="hero">
+ <div class="container">
+  <div class="hero-card">
+   <span class="badge">BIOLOGI · FASE F / KELAS XII</span>
+   <h1>EVOLUSI</h1>
+   <p class="lead">Detektif Evolusi: menyelidiki bukti, mekanisme perubahan populasi, keanekaragaman, dan kelangsungan hidup organisme.</p>
+   <div class="meta">
+    <span class="pill">Kurikulum Merdeka</span>
+    <span class="pill">Problem Based Learning</span>
+    <span class="pill">2 JP · 90 menit</span>
+    <span class="pill">Saintifik & Pembelajaran Mendalam</span>
+   </div>
+   <button class="btn" onclick="go('pemantik')">Mulai Penyelidikan 🔎</button>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Tujuan pembelajaran</div>
+   <h2>Hari ini kita menjadi detektif evolusi.</h2>
+   <p class="small">Setelah penyelidikan, kamu akan membandingkan teori evolusi, menganalisis bukti, membaca data seleksi alam, membedakan mekanisme evolusi, serta mengaitkannya dengan spesiasi dan kelangsungan hidup.</p>
+  </div>
+  <div class="grid2">
+   <div class="card objective"><div class="num">1</div><div>Menjelaskan perkembangan teori evolusi dengan membandingkan Lamarck, Darwin-Wallace, dan sintesis modern.</div></div>
+   <div class="card objective"><div class="num">2</div><div>Menganalisis bukti fosil, anatomi, embriologi, molekuler, dan biogeografi untuk menyimpulkan hubungan kekerabatan.</div></div>
+   <div class="card objective"><div class="num">3</div><div>Menjelaskan seleksi alam, mutasi, aliran gen, pergeseran genetik, dan perkawinan tidak acak.</div></div>
+   <div class="card objective"><div class="num">4</div><div>Menganalisis data simulasi seleksi alam untuk menjelaskan perubahan proporsi sifat dalam populasi.</div></div>
+   <div class="card objective"><div class="num">5</div><div>Mengaitkan mekanisme evolusi, spesiasi, dan pola evolusi dengan keanekaragaman serta kelangsungan hidup organisme.</div></div>
+  </div>
+ </div>
+</section>
+
+<section id="pemantik">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Fase 1 · Orientasi masalah</div>
+   <h2>🎬 Jejak Evolusi</h2>
+   <p>Perhatikan video berikut sebagai gambaran awal tentang jejak evolusi. Setelah menonton, jawab pertanyaan singkat dari guru.</p>
+  </div>
+  <div class="video-wrap">
+   <iframe src="https://www.youtube.com/embed/brLgiAgh4dg" title="Sisa Evolusi di Tubuh Kita Ini Udah Ngga Berguna - Kok Bisa?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="caption">Video pemantik: “Sisa Evolusi di Tubuh Kita Ini Udah ‘Ngga Berguna’” — Kok Bisa?. Video digunakan sebagai pemantik penyelidikan, bukan sebagai satu-satunya sumber materi.</p>
+  <div class="teacher-prompt"><b>💬 Pertanyaan singkat:</b> Dari video tadi, apa yang menunjukkan bahwa evolusi dapat dipelajari melalui bukti?</div>
+
+  <div class="section-head" style="margin-top:35px">
+   <div class="kicker">Tiga pertanyaan penyelidikan</div>
+   <h2>Apa yang sebenarnya terjadi?</h2>
+  </div>
+  <div class="grid">
+   <article class="card prompt-card">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Homology_vertebrates-en.svg" alt="Perbandingan struktur homolog anggota gerak vertebrata" onerror="this.style.display='none'">
+    <div class="prompt-body"><h3>🦴 Jejak kekerabatan</h3><p class="question">Mengapa tulang sirip paus, sayap kelelawar, dan lengan manusia memiliki pola dasar yang mirip?</p><p class="small">Petunjuk: pikirkan asal struktur dan fungsi.</p></div>
+   </article>
+   <article class="card prompt-card">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Biston_betularia.jpg" alt="Peppered moth Biston betularia" onerror="this.style.display='none'">
+    <div class="prompt-body"><h3>🦋 Perubahan populasi</h3><p class="question">Mengapa ngengat berwarna gelap makin banyak di kawasan berjelaga? Apakah ngengat sengaja berubah warna?</p><p class="small">Petunjuk: perhatikan variasi dalam populasi.</p></div>
+   </article>
+   <article class="card prompt-card">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Long_Nose.jpg" alt="Bekantan Nasalis larvatus" onerror="this.style.display='none'">
+    <div class="prompt-body"><h3>🐒 Keanekaragaman Nusantara</h3><p class="question">Mengapa bekantan hanya ditemukan secara alami di wilayah tertentu dan mengapa spesies endemik mudah terancam?</p><p class="small">Petunjuk: pikirkan persebaran, habitat, dan populasi.</p></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="concept-video">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Bekal konsep</div>
+   <h2>🎥 Konsep Dasar Evolusi</h2>
+   <p>Sebelum membandingkan gagasan Lamarck, Darwin–Wallace, dan sintesis modern, simak video berikut sebagai bekal untuk memahami konsep dasar evolusi.</p>
+  </div>
+  <div class="video-wrap">
+   <iframe src="https://www.youtube.com/embed/-Jv8fj6n568" title="Konsep Dasar Evolusi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="caption">Video konsep digunakan sebagai pengantar sebelum membandingkan perkembangan teori evolusi.</p>
+ </div>
+</section>
+
+<section class="theory" id="bukti">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Kasus, teori, dan bukti</div>
+   <h2>🧬 Detektif Evolusi</h2>
+   <p>Bandingkan gagasan utama perkembangan teori evolusi, kemudian gunakan bukti untuk menguji dugaanmu.</p>
+  </div>
+
+  <div class="timeline">
+   <div class="row"><div class="tag">Lamarck</div><div class="card"><b>Gagasan perubahan melalui penggunaan dan tidak digunakan serta pewarisan sifat yang diperoleh.</b><br><span class="small">Gunakan bagian ini untuk membandingkan gagasan historis dengan penjelasan evolusi modern.</span></div></div>
+   <div class="row"><div class="tag">Darwin–Wallace</div><div class="card"><b>Seleksi alam bekerja pada variasi yang ada dalam populasi; individu dengan variasi yang lebih sesuai dapat lebih berhasil bertahan hidup dan bereproduksi.</b></div></div>
+   <div class="row"><div class="tag">Sintesis modern</div><div class="card"><b>Menghubungkan evolusi dengan genetika populasi, variasi genetik, mutasi, rekombinasi, dan mekanisme yang mengubah frekuensi alel.</b></div></div>
+  </div>
+
+  <h2 style="margin-top:42px">Lima bukti evolusi</h2>
+  <div class="grid">
+   <article class="card evidence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Archaeopteryx_fossil.jpg" alt="Fosil Archaeopteryx"><div class="body"><h3>🪨 Fosil</h3><p>Catatan fosil menunjukkan perubahan organisme sepanjang waktu dan dapat memperlihatkan bentuk transisi.</p></div></article>
+   <article class="card evidence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Homology_vertebrates-en.svg" alt="Struktur anatomi perbandingan"><div class="body"><h3>🦴 Anatomi perbandingan</h3><p>Homolog: asal sama, fungsi dapat berbeda. Analog: fungsi sama, asal berbeda. Vestigial: struktur yang mengecil atau kehilangan fungsi aslinya.</p></div></article>
+   <article class="card evidence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Comparative_embryology_of_the_vertebrates%3B_with_2057_drawings_and_photos._grouped_as_380_illus_(1953)_(20644192346).jpg" alt="Embriologi perbandingan"><div class="body"><h3>🐣 Embriologi</h3><p>Perbandingan tahap perkembangan embrio dapat memberikan informasi tentang hubungan kekerabatan.</p></div></article>
+   <article class="card evidence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/DNA_Double_Helix.png" alt="DNA double helix"><div class="body"><h3>🧬 Molekuler</h3><p>Kemiripan DNA, RNA, protein, dan proses biokimia dapat digunakan untuk membandingkan kekerabatan.</p></div></article>
+   <article class="card evidence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wallace_Linie.jpg" alt="Peta Garis Wallace"><div class="body"><h3>🗺️ Biogeografi</h3><p>Pola persebaran organisme dapat membantu menjelaskan sejarah isolasi, migrasi, dan diversifikasi.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section id="lab">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Fase 3 · Penyelidikan</div>
+   <h2>🔬 Lab Seleksi Alam</h2>
+   <p>Amati bagaimana jumlah tiga variasi warna ngengat berubah ketika pemangsa mengambil 20 mangsa pada setiap generasi.</p>
+  </div>
+  <div class="card sim">
+   <div class="sim-top">
+    <label>Latar:
+      <select id="bgSelect" class="select">
+       <option value="plain">Netral</option><option value="forest">Vegetasi</option><option value="soil">Tanah</option><option value="soot">Berjelaga</option>
+      </select>
+    </label>
+    <button class="btn" id="startSim">Mulai / Lanjutkan Generasi</button>
+    <button class="btn secondary" id="resetSim">Reset</button>
+    <span class="small" id="simMsg">Siapkan populasi.</span>
+   </div>
+   <div id="arena" class="arena"><div class="predator">🐦 Pemangsa</div></div>
+   <div class="sim-stats">
+    <div class="stat">🦋 Terang<strong id="aCount">30</strong></div>
+    <div class="stat">🦋 Abu-abu<strong id="bCount">30</strong></div>
+    <div class="stat">🦋 Gelap<strong id="cCount">30</strong></div>
+   </div>
+   <canvas id="chart" width="1000" height="300"></canvas>
+   <p class="small"><b>🔎 Pertanyaan penyelidikan:</b> Apa yang menyebabkan proporsi warna ngengat berubah dari generasi ke generasi?</p>
+  </div>
+
+  <h2 style="margin-top:45px">Kartu lima mekanisme evolusi</h2>
+  <p class="small">Baca skenario, tentukan mekanismenya, lalu buka jawaban untuk memeriksa alasanmu.</p>
+  <div class="mechanisms">
+   <div class="mech"><button onclick="this.parentElement.classList.toggle('open')"><b>Mutasi</b><div class="answer">Perubahan pada materi genetik yang dapat menghasilkan variasi baru.</div></button></div>
+   <div class="mech"><button onclick="this.parentElement.classList.toggle('open')"><b>Aliran gen</b><div class="answer">Perpindahan alel antarpopulasi melalui perpindahan individu atau gamet.</div></button></div>
+   <div class="mech"><button onclick="this.parentElement.classList.toggle('open')"><b>Pergeseran genetik</b><div class="answer">Perubahan frekuensi alel akibat peristiwa kebetulan, terutama pada populasi kecil.</div></button></div>
+   <div class="mech"><button onclick="this.parentElement.classList.toggle('open')"><b>Seleksi alam</b><div class="answer">Variasi yang memengaruhi keberhasilan hidup dan reproduksi dapat menjadi lebih umum dalam populasi.</div></button></div>
+   <div class="mech"><button onclick="this.parentElement.classList.toggle('open')"><b>Perkawinan tidak acak</b><div class="answer">Pola perkawinan tertentu mengubah frekuensi genotipe, misalnya meningkatkan homozigositas, tanpa secara langsung mengubah frekuensi alel.</div></button></div>
+  </div>
+ </div>
+</section>
+
+<section id="nusantara" class="theory">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Kisah Evolusi Nusantara</div>
+   <h2>🌏 Dari variasi menuju keanekaragaman</h2>
+  </div>
+  <div class="grid2">
+   <article class="card case">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gl-Darwin%27s_finches.jpg" alt="Burung finch Darwin">
+    <div class="body">
+     <h3>🐦 Kutilang Galapagos</h3>
+     <p>Kutilang Galapagos memiliki bentuk paruh yang berbeda. Perbedaan bentuk paruh berkaitan dengan jenis makanan yang tersedia di lingkungannya.</p>
+     <button class="btn secondary" onclick="showCase('finch')">Analisis kasus</button>
+     <div id="finch" class="case-result">🔎 <b>Analisis:</b> Mengapa kutilang yang memakan jenis makanan berbeda dapat memiliki bentuk paruh yang berbeda?</div>
+    </div>
+   </article>
+   <article class="card case">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bekantan_at_Pulau_Bakut.jpg" alt="Bekantan dan habitatnya">
+    <div class="body">
+     <h3>🐒 Bekantan</h3>
+     <p>Bekantan hidup di habitat tertentu di Kalimantan. Perubahan habitat dapat mengurangi tempat hidup dan sumber makanan yang tersedia.</p>
+     <button class="btn secondary" onclick="showCase('bekantan')">Analisis kasus</button>
+     <div id="bekantan" class="case-result">🔎 <b>Analisis:</b> Mengapa perubahan habitat dapat membuat bekantan lebih sulit bertahan hidup?</div>
+    </div>
+   </article>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+   <h3>Infografis konsep</h3>
+   <div class="grid2">
+    <div><b>Spesiasi alopatrik</b><p class="small">Populasi terpisah oleh hambatan geografis, kemudian dapat mengalami divergensi hingga terbentuk isolasi reproduktif.</p></div>
+    <div><b>Spesiasi simpatrik</b><p class="small">Spesiasi terjadi tanpa pemisahan geografis yang jelas, misalnya melalui isolasi ekologis atau mekanisme genetik tertentu.</p></div>
+    <div><b>Divergen</b><p class="small">Kelompok dengan nenek moyang yang sama berkembang menjadi bentuk yang berbeda.</p></div>
+    <div><b>Konvergen</b><p class="small">Kelompok yang tidak berkerabat dekat dapat memiliki kemiripan fungsi/bentuk akibat tekanan lingkungan yang serupa.</p></div>
+    <div><b>Radiasi adaptif</b><p class="small">Satu garis keturunan berkembang menjadi beberapa bentuk yang menempati relung berbeda.</p></div>
+    <div><b>Kelangsungan hidup</b><p class="small">Adaptasi, variasi genetik, ukuran populasi, lingkungan, dan tekanan perubahan habitat dapat berkaitan dengan kemampuan populasi bertahan.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="kuis">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Kuis & refleksi</div>
+   <h2>🧠 Uji pemahamanmu</h2>
+   <p>Kerjakan mandiri. Sistem menghitung jawaban benar secara otomatis.</p>
+  </div>
+  <form id="quizForm" class="quiz"></form>
+  <button class="btn" onclick="gradeQuiz()">Cek hasil</button>
+  <div id="quizResult" class="result"></div>
+
+  <div class="card reflection" style="margin-top:25px">
+   <h3>✍️ Refleksi</h3>
+   <p>Setelah penyelidikan, apa satu konsep evolusi yang sekarang paling kamu pahami? Apa yang masih membingungkan?</p>
+   <textarea placeholder="Tulis refleksimu di sini..."></textarea>
+   <div style="margin-top:12px"><button type="button" class="btn secondary" onclick="saveReflection()">Simpan refleksi</button></div>
+   <p id="saveMsg" class="small"></p>
+  </div>
+
+  <div style="margin-top:25px">
+   <details><summary>📚 Glosarium singkat</summary>
+    <p><b>Adaptasi</b>: sifat yang membantu makhluk hidup bertahan hidup dan bereproduksi di lingkungannya.</p>
+    <p><b>Alel</b>: bentuk alternatif dari suatu gen.</p>
+    <p><b>Endemik</b>: hanya ditemukan di wilayah tertentu.</p>
+    <p><b>Frekuensi alel</b>: perbandingan jumlah suatu alel terhadap seluruh alel gen yang sama dalam populasi.</p>
+    <p><b>Spesiasi</b>: proses terbentuknya spesies baru.</p>
+   </details>
+   <details><summary>🔗 Sumber & atribusi aset</summary>
+    <p class="small">Aset gambar gunakan file yang sesuai dengan nama pada folder <b>images/</b>. Cantumkan nama pembuat, lisensi, dan tautan sumber pada versi final website sesuai halaman sumber masing-masing.</p>
+    <p class="small">Rujukan konsep: Buku Biologi SMA Kelas XII, Panduan Mata Pelajaran Biologi, Campbell Biology, Understanding Evolution, HHMI BioInteractive, dan Wikimedia Commons.</p>
+   </details>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <b>Detektif Evolusi · Biologi Fase F / Kelas XII</b><br>
+  <span>Website media pembelajaran berbasis penyelidikan · Problem Based Learning</span>
+ </div>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+
+let generation=0;
+let pop={a:30,b:30,c:30};
+let history=[];
+const colors={a:'#e7e0cf',b:'#81766b',c:'#332e31'};
+
+function randomizePrey(){
+ const arena=$('#arena');
+ arena.querySelectorAll('.prey').forEach(x=>x.remove());
+ const total=pop.a+pop.b+pop.c;
+ ['a','b','c'].forEach(k=>{
+   for(let i=0;i<pop[k];i++){
+    const el=document.createElement('div');el.className='prey '+k;
+    el.title = k==='a' ? 'Ngengat terang' : k==='b' ? 'Ngengat abu-abu' : 'Ngengat gelap';
+    el.style.left=(5+Math.random()*88)+'%';
+    el.style.top=(10+Math.random()*78)+'%';
+    arena.appendChild(el);
+   }
+ });
+ $('#aCount').textContent=pop.a;$('#bCount').textContent=pop.b;$('#cCount').textContent=pop.c;
+}
+
+function drawChart(){
+ const c=$('#chart'),ctx=c.getContext('2d');
+ ctx.clearRect(0,0,c.width,c.height);
+ const pad=55,w=c.width-pad*2,h=c.height-60;
+ ctx.strokeStyle='#cdbfd7';ctx.lineWidth=2;
+ ctx.beginPath();ctx.moveTo(pad,20);ctx.lineTo(pad,20+h);ctx.lineTo(c.width-pad,20+h);ctx.stroke();
+ const max=90;
+ const series=[
+  {key:'a',stroke:'#9b7b53'},{key:'b',stroke:'#81766b'},{key:'c',stroke:'#332e31'}
+ ];
+ series.forEach(s=>{
+  ctx.strokeStyle=s.stroke;ctx.lineWidth=4;ctx.beginPath();
+  history.forEach((d,i)=>{
+   const x=pad+i*(w/Math.max(1,2));
+   const y=20+h-(d[s.key]/max)*h;
+   i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });ctx.stroke();
+ });
+ ctx.fillStyle='#5c5064';ctx.font='bold 16px system-ui';
+ ctx.fillText('Jumlah individu',8,22);
+ history.forEach((d,i)=>ctx.fillText('G'+d.g,pad+i*(w/Math.max(1,2))-8,c.height-10));
+}
+
+function nextGeneration(){
+ if(generation>=3){$('#simMsg').textContent='Tiga generasi selesai. Baca pola pada grafik dan catat hasilnya.';return}
+ generation++;
+ const bg=$('#bgSelect').value;
+ // Probabilitas sederhana agar latar memberi konteks seleksi.
+ let visibility={a:.65,b:.75,c:.85};
+ if(bg==='forest') visibility={a:.78,b:.72,c:.55};
+ if(bg==='soil') visibility={a:.50,b:.72,c:.86};
+ if(bg==='soot') visibility={a:.88,b:.68,c:.48};
+ const take=20;
+ const weights={a:pop.a*visibility.a,b:pop.b*visibility.b,c:pop.c*visibility.c};
+ const sum=weights.a+weights.b+weights.c;
+ const removed={a:0,b:0,c:0};
+ let remain=take;
+ ['a','b','c'].forEach((k,idx)=>{
+   if(idx<2){
+    removed[k]=Math.min(pop[k],Math.round(take*weights[k]/sum));
+    remain-=removed[k];
+   }else removed[k]=Math.max(0,Math.min(pop[k],remain));
+ });
+ pop.a=Math.max(0,pop.a-removed.a);
+ pop.b=Math.max(0,pop.b-removed.b);
+ pop.c=Math.max(0,pop.c-removed.c);
+ // Reproduce survivors to keep a comparable population size.
+ const survivors=pop.a+pop.b+pop.c;
+ const target=90;
+ if(survivors>0){
+   pop.a=Math.round(pop.a/survivors*target);
+   pop.b=Math.round(pop.b/survivors*target);
+   pop.c=target-pop.a-pop.b;
+ }
+ history.push({g:generation,a:pop.a,b:pop.b,c:pop.c});
+ randomizePrey();drawChart();
+ $('#simMsg').textContent=`Generasi ${generation}: pemangsa mengambil 20 ngengat. Amati warna yang lebih banyak bertahan dan perubahan proporsinya.`;
+}
+$('#startSim').addEventListener('click',nextGeneration);
+$('#resetSim').addEventListener('click',()=>{
+ generation=0;pop={a:30,b:30,c:30};history=[{g:0,a:30,b:30,c:30}];
+ randomizePrey();drawChart();$('#simMsg').textContent='Populasi direset.';
+});
+$('#bgSelect').addEventListener('change',()=>{
+ const v=$('#bgSelect').value;
+ $('#arena').className='arena '+(v==='plain'?'':v);
+ randomizePrey();
+});
+history=[{g:0,a:30,b:30,c:30}];randomizePrey();drawChart();
+
+function showCase(id){const e=$('#'+id);e.style.display=e.style.display==='block'?'none':'block'}
+
+const questions=[
+ {q:'1. Struktur tulang lengan manusia, sayap kelelawar, dan sirip paus memiliki pola dasar yang sama tetapi fungsi berbeda. Bukti tersebut paling tepat disebut...',o:['struktur analog','struktur homolog','isolasi reproduktif','aliran gen'],a:1},
+ {q:'2. Badai secara kebetulan mengurangi populasi kura-kura dari 2.000 menjadi 20 individu dan frekuensi alelnya berubah. Mekanisme yang sesuai adalah...',o:['seleksi alam','mutasi','pergeseran genetik','perkawinan tidak acak'],a:2},
+ {q:'3. Mengapa variasi warna ngengat dapat berubah proporsinya dari generasi ke generasi?',o:['setiap individu mengubah warna tubuh karena kebutuhan','variasi yang sudah ada dapat memiliki keberhasilan hidup dan reproduksi berbeda','lingkungan langsung mengubah semua gen individu','populasi selalu berubah menuju bentuk yang paling sempurna'],a:1},
+ {q:'4. Dua populasi terpisah sungai selama banyak generasi dan akhirnya tidak dapat menghasilkan keturunan fertil. Ini paling sesuai dengan...',o:['spesiasi alopatrik','konvergensi','aliran gen','perkawinan acak'],a:0},
+ {q:'5. Perbedaan bentuk paruh burung dari satu nenek moyang yang menempati relung berbeda merupakan contoh...',o:['evolusi konvergen','radiasi adaptif','pergeseran genetik saja','struktur analog'],a:1},
+ {q:'6. Pernyataan yang paling sesuai dengan sintesis modern adalah...',o:['evolusi terjadi pada individu karena kebutuhan','evolusi berkaitan dengan perubahan frekuensi alel dalam populasi dari generasi ke generasi','semua perubahan sifat merupakan hasil penggunaan organ','seleksi alam menciptakan variasi baru sesuai kebutuhan'],a:1},
+ {q:'7. Faktor yang dapat mengubah frekuensi alel karena perpindahan individu antarpopulasi adalah...',o:['aliran gen','embriologi','homologi','isolasi reproduktif'],a:0},
+ {q:'8. Perkawinan tidak acak secara langsung terutama dapat mengubah...',o:['asal-usul fosil','frekuensi genotipe','jumlah kromosom seluruh spesies','Garis Wallace'],a:1},
+ {q:'9. Bukti yang membandingkan DNA atau protein untuk menilai kekerabatan termasuk bukti...',o:['biogeografi','molekuler/biokimia','embriologi','fosil'],a:1},
+ {q:'10. Pernyataan yang paling tepat tentang evolusi adalah...',o:['individu berevolusi karena ingin menyesuaikan diri','evolusi memiliki tujuan menuju organisme yang sempurna','populasi dapat mengalami perubahan frekuensi alel dari generasi ke generasi','yang paling kuat selalu bertahan'],a:2}
+];
+function renderQuiz(){
+ $('#quizForm').innerHTML=questions.map((x,i)=>`
+ <div class="qbox"><b>${x.q}</b>${x.o.map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('')}</div>`).join('');
+}
+function gradeQuiz(){
+ let score=0,answered=0;
+ questions.forEach((x,i)=>{
+  const el=document.querySelector(`input[name="q${i}"]:checked`);
+  if(el){answered++;if(+el.value===x.a)score++}
+ });
+ const r=$('#quizResult');r.style.display='block';
+ r.innerHTML=`<b>Hasil: ${score}/10 benar</b><br>Kamu menjawab ${answered} dari 10 soal. Gunakan hasil ini untuk menentukan bagian yang perlu dipelajari kembali.`;
+ r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+renderQuiz();
+
+function saveReflection(){
+ const t=$('.reflection textarea').value.trim();
+ $('#saveMsg').textContent=t?'Refleksi tersimpan pada halaman ini selama halaman tidak ditutup.':'Tulis refleksi terlebih dahulu.';
+}
+
+const sections=['beranda','bukti','lab','nusantara','kuis'];
+const navButtons=$$('[data-go]');
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   navButtons.forEach(b=>b.classList.toggle('active',b.dataset.go===entry.target.id))
+  }
+ })
+},{threshold:.25});
+sections.forEach(id=>{const e=document.getElementById(id);if(e)observer.observe(e)});
+</script>
+</body>
+</html>
